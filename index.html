@@ -20,8 +20,12 @@
         .hero-gradient {
             background: linear-gradient(135deg, #0c4a6e 0%, #075985 100%);
         }
-        .kitchen-box {
+        .step-card {
             border-left: 4px solid var(--lobster-red);
+            transition: transform 0.2s;
+        }
+        .step-card:hover {
+            transform: translateX(5px);
         }
     </style>
 </head>
@@ -58,70 +62,65 @@
 
     <main class="max-w-6xl mx-auto px-6 py-12 space-y-16">
         
-        <!-- Section 1: Kitchen Architecture Principle (整合網路架構圖) -->
+        <!-- Layman's Guide Section: The Kitchen Analogy -->
         <section>
-            <div class="flex items-center gap-3 mb-8">
-                <i class="fas fa-utensils text-rose-600 text-3xl"></i>
-                <h2 class="text-3xl font-bold text-slate-800 tracking-tight">核心原理：現代廚房運作模式</h2>
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-800">門外漢也能秒懂：AI 廚房運作原理</h2>
+                <p class="text-slate-500 mt-2 italic">我們把尖端科技轉化為「高級餐廳」的服務流程</p>
             </div>
-            
-            <div class="grid lg:grid-cols-2 gap-12 items-start">
-                <div class="space-y-6 text-slate-600 leading-relaxed text-lg">
-                    <p>
-                        本系統的技術哲學在於將「醫療人工智慧應用」類比為一間<strong>高效能的現代廚房 (Modern Kitchen)</strong>。在這種架構下，醫療需求不再是被單一處理，職責經過精密的流水線作業產出結果。
-                    </p>
-                    <div class="kitchen-box bg-white p-6 rounded-r-xl shadow-sm space-y-4">
-                        <h3 class="font-bold text-xl text-slate-800">1. 外場接收層 (Interaction Layer)</h3>
-                        <p class="text-sm">如同餐廳的領檯與服務生（包含圖中左側的 Telegram/LINE/WhatsApp Bot），負責接收顧客（醫護或病患）的訂單，並將其轉換為內場可理解的 Webhook 標準格式。</p>
-                        
-                        <h3 class="font-bold text-xl text-slate-800">2. 內場經理層 (Kitchen Manager)</h3>
-                        <p class="text-sm">這是系統的中樞 Webhook 管理器與 API Gateway。它負責「排單」與「備料」，判斷任務類型，並將其組合成合適的「LLM Prompt」傳遞給核心處理層。</p>
-                        
-                        <h3 class="font-bold text-xl text-slate-800">3. 行政主廚與食譜引擎 (Master Chef & Recipe Engine)</h3>
-                        <p class="text-sm">核心大型語言模型（GPT-4/Claude）扮演主廚，依據 GitHub 中的「食譜庫（Codebase 與訓練手冊）」對數據進行處理，確保每一道「醫療建議」都符合最新的專業指引。</p>
-                        
-                        <h3 class="font-bold text-xl text-slate-800">4. 硬體與基礎設施 (Infrastructure)</h3>
-                        <p class="text-sm">由 Railway 與 Zeabur 提供運算引擎（爐灶）與資料庫儲存（儲藏室），透過 CI/CD 流程確保系統能即時更新並 24 小時穩定運作。</p>
+
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <div class="step-card bg-white p-6 rounded-r-xl shadow-sm">
+                        <h4 class="font-bold text-lg text-rose-600 mb-1">Step 1. 外場接單</h4>
+                        <p class="text-sm text-slate-600">病患或護理師傳送訊息（如：我想查詢攝護腺癌症狀），就像在餐廳劃好菜單交給服務生。</p>
+                    </div>
+                    <div class="step-card bg-white p-6 rounded-r-xl shadow-sm">
+                        <h4 class="font-bold text-lg text-rose-600 mb-1">Step 2. 領檯分流 (Clio)</h4>
+                        <p class="text-sm text-slate-600">總管理師 Clio 判斷這張「訂單」是要查文獻、查病房、還是追蹤病況，並分配給專屬部門。</p>
+                    </div>
+                    <div class="step-card bg-white p-6 rounded-r-xl shadow-sm">
+                        <h4 class="font-bold text-lg text-rose-600 mb-1">Step 3. 翻閱食譜</h4>
+                        <p class="text-sm text-slate-600">經理從 GitHub 代碼庫調出醫師預設好的「標準指引（食譜）」，確保 AI 處理邏輯符合醫療規範。</p>
+                    </div>
+                    <div class="step-card bg-white p-6 rounded-r-xl shadow-sm">
+                        <h4 class="font-bold text-lg text-rose-600 mb-1">Step 4. 主廚烹調 (LLM Engine)</h4>
+                        <p class="text-sm text-slate-600">AI 大腦（如 GPT-4）根據訊息與食譜，進行智慧運算並「烹飪」出專業的回答內容。</p>
+                    </div>
+                    <div class="step-card bg-white p-6 rounded-r-xl shadow-sm">
+                        <h4 class="font-bold text-lg text-rose-600 mb-1">Step 5. 專人上菜</h4>
+                        <p class="text-sm text-slate-600">Florence、Hygieia 或 Trota 等機器人助理將精準的答案送回您的手機螢幕上。</p>
                     </div>
                 </div>
-                <div class="space-y-4">
-                    <div class="bg-white p-4 rounded-2xl shadow-xl border border-slate-200">
-                        <!-- 圖一：網路運作架構圖 -->
-                        <img src="https://i.postimg.cc/QdnF3j26/1774745600393.png" alt="網路運作架構圖" class="w-full rounded-lg">
-                        <p class="text-center text-sm text-slate-400 mt-4 font-medium italic">圖一：現代廚房運作與網路架構整合示意圖</p>
-                    </div>
-                    <div class="bg-blue-50 p-6 rounded-2xl border border-blue-100">
-                        <h4 class="font-bold text-blue-900 mb-2 flex items-center">
-                            <i class="fas fa-info-circle mr-2"></i> 架構解析
-                        </h4>
-                        <p class="text-sm text-blue-800 leading-relaxed">
-                            此架構展示了訊息如何從左側社交平台，經過中間的「廚房核心（處理層）」進行智慧運算，最終與下方的「基礎設施層」聯動，實現全自動化的醫療行政與數據監測。
-                        </p>
+                <div>
+                    <div class="bg-white p-4 rounded-3xl shadow-2xl border border-slate-200">
+                        <img src="https://i.postimg.cc/QdnF3j26/1774745600393.png" alt="網路運作架構圖" class="w-full rounded-2xl shadow-inner">
+                        <p class="text-center text-sm text-slate-400 mt-4 font-medium italic">圖一：網路運作與「現代廚房」架構整合圖</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Section 2: Team Matrix -->
-        <section>
+        <!-- Team Matrix Section -->
+        <section class="bg-white rounded-3xl p-10 shadow-sm border border-slate-200">
             <div class="text-center mb-12">
                 <h2 class="text-3xl font-bold text-slate-800">智慧機器人矩陣角色定義</h2>
-                <p class="text-slate-500 mt-2">在「內場經理」Clio 的調度下，各職能助理分工明確</p>
+                <p class="text-slate-500 mt-2">由總管理師 Clio 統籌的四位專家級數位助手</p>
             </div>
             
-            <div class="grid md:grid-cols-2 gap-10">
-                <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-200">
-                    <!-- 更新後的角色圖連結 -->
-                    <img src="https://i.postimg.cc/Fs5qTc1D/1774743229675.png" alt="醫療 AI 團隊角色圖" class="w-full rounded-2xl mb-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="order-2 lg:order-1">
+                    <img src="https://i.postimg.cc/N0v0pkLx/1000045925.jpg" alt="醫療 AI 團隊角色分工圖" class="w-full rounded-2xl shadow-lg">
                 </div>
-                <div class="space-y-6">
+                <div class="space-y-6 order-1 lg:order-2">
                     <div class="flex gap-4">
                         <div class="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center flex-shrink-0">
                             <i class="fas fa-crown text-amber-600"></i>
                         </div>
                         <div>
-                            <h4 class="font-bold text-xl">Clio 總管理師</h4>
-                            <p class="text-slate-500 text-sm mt-1">負責統籌管理與社群資訊分流，是所有指令的決策者與導航員。</p>
+                            <h4 class="font-bold text-xl text-slate-800">Clio 總管理師</h4>
+                            <p class="text-slate-500 text-sm mt-1 leading-relaxed italic">「內場經理」</p>
+                            <p class="text-slate-600 text-sm mt-1 leading-relaxed">統籌管理所有訊息流，並判斷應由哪位專業助理進行對應處理。</p>
                         </div>
                     </div>
                     <div class="flex gap-4">
@@ -129,8 +128,9 @@
                             <i class="fas fa-user-nurse text-blue-600"></i>
                         </div>
                         <div>
-                            <h4 class="font-bold text-xl">Florence 臨床助理</h4>
-                            <p class="text-slate-500 text-sm mt-1">專門處理查房、行政通報與月報整理，是執行層的雙手，確保臨床事務精準完成。</p>
+                            <h4 class="font-bold text-xl text-slate-800">Florence 臨床助理</h4>
+                            <p class="text-slate-500 text-sm mt-1 leading-relaxed italic">「外場領班」</p>
+                            <p class="text-slate-600 text-sm mt-1 leading-relaxed">優化查房、通報、月報等臨床行政流程，是醫師最得力的雙手。</p>
                         </div>
                     </div>
                     <div class="flex gap-4">
@@ -138,8 +138,9 @@
                             <i class="fas fa-microscope text-emerald-600"></i>
                         </div>
                         <div>
-                            <h4 class="font-bold text-xl">Hygieia 醫學資訊</h4>
-                            <p class="text-slate-500 text-sm mt-1">串接 PubMed 與醫學指引，將海量學術知識轉化為即時可查的臨床依據。</p>
+                            <h4 class="font-bold text-xl text-slate-800">Hygieia 醫學資訊</h4>
+                            <p class="text-slate-500 text-sm mt-1 leading-relaxed italic">「知識資料庫」</p>
+                            <p class="text-slate-600 text-sm mt-1 leading-relaxed">串接 PubMed 文獻與國際醫學指引，提供最即時的實證醫學依據。</p>
                         </div>
                     </div>
                     <div class="flex gap-4">
@@ -147,8 +148,9 @@
                             <i class="fas fa-shield-virus text-rose-600"></i>
                         </div>
                         <div>
-                            <h4 class="font-bold text-xl">Trota 個管師</h4>
-                            <p class="text-slate-500 text-sm mt-1">針對攝護腺癌個案進行 PSA 指標追蹤與檢查提醒，落實長期的精準照護。</p>
+                            <h4 class="font-bold text-xl text-slate-800">Trota 個管師</h4>
+                            <p class="text-slate-500 text-sm mt-1 leading-relaxed italic">「精準照護管家」</p>
+                            <p class="text-slate-600 text-sm mt-1 leading-relaxed">針對攝護腺癌個案進行數值追蹤（如 PSA）與檢查提醒，確保護理不中斷。</p>
                         </div>
                     </div>
                 </div>
@@ -157,17 +159,19 @@
 
     </main>
 
-    <footer class="bg-white py-12 border-t border-slate-200 text-center">
-        <p class="text-slate-500 font-bold mb-2">醫療 AI 🦞 智慧團隊</p>
-        <p class="text-slate-400 text-sm">數位轉型 · 智慧醫療 · 流程自動化</p>
-        <div class="mt-6 flex justify-center gap-6 text-slate-300">
-            <i class="fab fa-telegram text-2xl"></i>
-            <i class="fab fa-github text-2xl"></i>
-            <i class="fas fa-server text-2xl"></i>
+    <footer class="bg-slate-900 text-slate-400 py-12 px-6 text-center">
+        <div class="max-w-4xl mx-auto">
+            <p class="text-white font-bold text-2xl mb-2 italic">醫療 AI 🦞 智慧團隊</p>
+            <p class="text-sm">數位轉型 · 智慧醫療 · 流程自動化</p>
+            <div class="mt-8 flex justify-center gap-6">
+                <i class="fab fa-telegram text-2xl hover:text-rose-500 transition-colors"></i>
+                <i class="fab fa-github text-2xl hover:text-rose-500 transition-colors"></i>
+                <i class="fas fa-server text-2xl hover:text-rose-500 transition-colors"></i>
+            </div>
+            <p class="mt-8 text-xs opacity-50">© 2024 Dr. Yeh's Urology AI Matrix Solution</p>
         </div>
     </footer>
 
 </body>
 </html>
-
 
